@@ -1,21 +1,13 @@
-import requests
-from bs4 import BeautifulSoup
-from pprint import pprint
+from glob import glob
+
 def main():
-    url = "https://logs.eolem.com/"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    for a in soup.find_all('a'):
-        print(a['href'])        
+    log_files = glob('*.log')
     
-    # url_logs = filter(lambda u:u['href'].endswith('.log'),soup.find_all('a') )
-    all_a = soup.find_all('a')
-    url_logs = [u['href'] for u in all_a if u['href'].endswith('.log')]
-    pprint(url_logs)
-    
-
-
+    for log_file in log_files:
+        with open(log_file) as f:
+            for line in f:
+                line = line.strip()
+                print(line)
 
 
 if __name__=='__main__':
