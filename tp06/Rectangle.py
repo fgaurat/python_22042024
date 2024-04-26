@@ -2,8 +2,9 @@
 class Rectangle:
     __cpt=0
     
-    def __init__(self,longueur,largeur):
+    def __init__(self,longueur=0,largeur=0):
         print(f"def __init__(self,{longueur},{largeur})")
+        assert longueur > 0 and largeur >0
         self.__longueur = longueur
         self.__largeur = largeur
         Rectangle.__cpt+=1
