@@ -1,5 +1,6 @@
 from pprint import pprint
 import json
+import re
 
 def main():
     with open("MOCK_DATA.csv","r") as f:
